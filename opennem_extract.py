@@ -3,6 +3,7 @@ import json
 from datetime import datetime as dt
 import pandas as pd
 import streamlit as st
+import numpy as np
 ###############################################################################
 
 """
@@ -213,6 +214,21 @@ def add_data (name, button, frame, frame_cols, frame_colours, data, data_option,
         
         [new_times, array_power, units] = format_data(data, data_option, name, avg)
         
+        if data_option == 'market_value' and array_power != None:
+            divisor = np.array(format_data(data, 'energy', name, avg)[1])
+        
+            for i in range(len(divisor)):
+                if divisor[i] == 0 or divisor[i] == None:
+                    divisor[i] = 1
+            
+            
+            divisor *= 10**6
+            
+            if type(array_power) != type(None) and type(array_power) == type(None):
+                if all(divisor != None) and all(array_power != None):
+                    array_power = (np.divide(array_power,divisor))
+                
+                
         idx = base_name.index(name)
         curr_name = base_cols[idx]
         
@@ -232,18 +248,3 @@ def add_data (name, button, frame, frame_cols, frame_colours, data, data_option,
     
     return frame
 ###############################################################################
-
-'''
-import matplotlib.pyplot as plt
-data = get_data('30d', 'AU')
-
-[wind_times, wind_power, wind_units] = format_data(data, 'energy', 'coal_brown')
-
-plt.plot(wind_times, wind_power)
-'''
-
-
-    
-            
-        
-    

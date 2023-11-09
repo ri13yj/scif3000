@@ -200,8 +200,9 @@ if time_option == '30d':
                 elif frame['Date'][i].hour == frame['Date'][0].hour and skip == False:
                     frame = frame.drop(i)
                     skip = True
-   
-    frame = frame.drop(final_idx)
+   try:
+        frame = frame.drop(final_idx)
+    except:
     
 else:
     x_format = 'Date:T'

@@ -203,7 +203,7 @@ if time_option == '30d':
     try:
        frame = frame.drop(final_idx)
     except: 
-        None
+        err = 1
     
 else:
     x_format = 'Date:T'

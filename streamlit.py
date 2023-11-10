@@ -189,11 +189,10 @@ x_format = 'Date:T'
     
 
 if time_option == '30d':
-    frame['Date'] = frame['Date'] - timedelta(hours=4) 
+    frame['Date'] = frame['Date'] - timedelta(hours=12) 
     x_format = 'hoursminutes(Date):O'
     
     final_idx = len(frame) -1
-    
     skip = True
     for i in range(final_idx):
         if frame['Date'][i].minute != 30:

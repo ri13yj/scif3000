@@ -131,7 +131,7 @@ Returns:
 
 def create_times(source, avg):
     if avg == True:
-       time_format = "%Y-%m-%dT%X%z"
+       time_format = "%Y-%m-%dT%X+10:00"
        start_time = dt.strptime('1900-01-01T14:00:00+10:00', time_format)
        end_time = dt.strptime('1900-01-02T14:00:00+10:00', time_format)
         

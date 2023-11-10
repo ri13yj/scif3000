@@ -9,6 +9,11 @@ import json
 import opennem_extract as oe
 ###############################################################################
 st. set_page_config(layout="wide")
+st.title('National Energy Generation Data')
+st.write('This visualisation shows a breakdown of the Australian energy market by '
+         +'energy sources and includes data for energy generation, market value and '
+         + 'associated emissions. In particular the data highlights Australia\'s '
+         + 'transition away from fossil fuels and towards renewable energy sources.')
 
 col1z, col2z = st.columns([1.5, 1])
 with col1z:
@@ -318,7 +323,10 @@ with col1z:
         x=x_format,
         y=frame.columns.values[1]+':Q',
         color=alt.Color('Source:N', scale=alt. 
-                        Scale(domain=frame_cols, range=frame_colours)) 
+                        Scale(domain=frame_cols, range=frame_colours)), 
+        order=alt.Order('Source', sort='ascending')
     )
 
     st.altair_chart(chart.interactive(), theme="streamlit", use_container_width=True)
+    
+    st.caption('Data Sourced From OpenNEM.org.au')

@@ -224,9 +224,8 @@ def add_data (name, button, frame, frame_cols, frame_colours, data, data_option,
             
             divisor *= 10**6
             
-            if type(array_power) != type(None) and type(array_power) == type(None):
-                if all(divisor != None) and all(array_power != None):
-                    array_power = (np.divide(array_power,divisor))
+            #if type(array_power) == list or type(array_power) == np.ndarray:
+               # array_power = (np.divide(array_power,divisor))
                 
                 
         idx = base_name.index(name)
